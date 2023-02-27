@@ -30,7 +30,6 @@ class EaphammerSettings(object):
             category = os.path.basename(os.path.normpath(config_dir))
             self.dict[category] = {}
 
-            print(config_dir)
             for filename in glob.glob('%s/*.ini' % config_dir):
 
                 parser = configparser.ConfigParser()
