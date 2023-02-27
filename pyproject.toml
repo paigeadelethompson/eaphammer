@@ -1,0 +1,54 @@
+[tool.poetry]
+name = "eaphammer"
+version = "0.1.0"
+description = ""
+authors = ["s0lst1c3"]
+license = "GPL-3.0"
+readme = "README.md"
+packages = [{ include = "eaphammer", from = "src" }, { include = "eaphammer_cert_wizard", from = "src" }, { include = "eaphammer_settings", from = "src" }]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+gevent = ">=1.5.0"
+tqdm = "*"
+pem = "*"
+pyopenssl = "*"
+scapy = "*"
+lxml = "*"
+beautifulsoup4 = "*"
+pyquery = "*"
+requests-html = "*"
+pywebcopy = "*"
+jinja2 = "*"
+flask-cors = "*"
+flask-socketio = "*"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "*"
+autoflake8 = "*"
+ipython = "*"
+monkeytype = "^22.2.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+eaphammer = "eaphammer.eaphammer:main"
+eaphammer-forge-beacons = "eaphammer.forgea_beacons:main"
+eaphammer-payload-generator = "eaphammer.payload_generator:main"
+eaphammer-ehdb = "eaphammer.ehdb:main"
+eaphammer-dhcp = "eaphammer_scripts.dhcp_script:main"
+eaphammer-kali-setup = "eaphammer_installer.kali_setup:main"
+eaphammer-parot-setup = "eaphammer_installer.parot_setup:main"
+eaphammer-raspbian-setup = "eaphammer_installer.raspbian_setup:main"
+eaphammer-ubuntu-unattended-setup = "eaphammer_installer.ubuntu_unattended_setup:main"
+
+[tool.autopep8]
+max_line_length = 120
+ignore = ["E501", "W6"]
+in-place = false
+diff = true
+recursive = true
+aggressive = 3
+exit-code = 1
