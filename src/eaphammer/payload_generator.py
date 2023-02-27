@@ -6,7 +6,7 @@ import random
 import sys
 
 from argparse import ArgumentParser
-from core.payloads import ScheduledPayload
+from eaphammer_core.payloads import ScheduledPayload
 
 def set_options():
 
@@ -36,7 +36,7 @@ def set_options():
 
     return options
 
-if __name__ == '__main__':
+def main():
 
     options = set_options()
 

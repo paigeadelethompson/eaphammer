@@ -6,7 +6,7 @@ import sys
 import json
 
 from argparse import ArgumentParser
-from settings import settings
+from eaphammer_settings import settings
 
 def _parse_eap_user_line(line):
 
@@ -616,7 +616,7 @@ def set_options():
         sys.exit()
     return args
     
-if __name__ == '__main__':
+def main(): 
 
     options = set_options()
 

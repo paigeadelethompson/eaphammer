@@ -194,7 +194,7 @@ def beacon_burster(args):
         pass
     
 
-if __name__ == '__main__':
+def main():
 
     options = setup()
 

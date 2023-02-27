@@ -35,7 +35,10 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
 eaphammer = "eaphammer.eaphammer:main"
-
+eaphammer-forge-beacons = "eaphammer.forgea_beacons:main"
+eaphammer-payload-generator = "eaphammer.payload_generator:main"
+eaphammer-ehdb = "eaphammer.ehdb:main"
+eaphammer-dhcp = "eaphammer_scripts.dhcp_script:main"
 [tool.autopep8]
 max_line_length = 120
 ignore = ["E501", "W6"]
