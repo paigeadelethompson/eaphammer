@@ -3,7 +3,6 @@ import os
 import sys
 
 from settings import settings
-from configparser import ConfigParser
 
 def exit_if_not_root():
 
@@ -14,7 +13,7 @@ def read_deps_file(deps_file):
     with open(deps_file) as fd:
         return ' '.join([ line.strip() for line in fd ])
 
-if __name__ == '__main__':
+def main(): 
 
     exit_if_not_root()
                     
@@ -44,8 +43,8 @@ if __name__ == '__main__':
     print('\ncomplete!\n')
 
 
-    print('\n[*] Installing Kali dependencies...\n')
-    os.system('apt -y install %s' % read_deps_file('raspbian-dependencies.txt'))
+    print('\n[*] Installing Parot dependencies...\n')
+    os.system('apt -y install %s' % read_deps_file('parot-dependencies.txt'))
     print('\n[*] complete!\n')
 
     print('\n[*] Installing Python dependencies...\n')
@@ -69,9 +68,9 @@ if __name__ == '__main__':
     os.system('cd {}/openssl && make install_sw'.format(local_dir))
     print('\n[*] complete!\n')
 
-    #print('\n[*] Create DH parameters file with default length of 2048...\n')
-    #os.system('{} dhparam -out {} 2048'.format(openssl_bin, dh_file))
-    #print('\ncomplete!\n')
+    print('\n[*] Create DH parameters file with default length of 2048...\n')
+    os.system('{} dhparam -out {} 2048'.format(openssl_bin, dh_file))
+    print('\ncomplete!\n')
 
     print('\n[*] Compiling hostapd...\n')
     os.system("cd %s && cp defconfig .config" % settings.dict['paths']['directories']['hostapd'])
@@ -102,15 +101,4 @@ if __name__ == '__main__':
     os.symlink(settings.dict['paths']['wskeyloggerd']['usr_templates'],
                settings.dict['paths']['wskeyloggerd']['usr_templates_sl'])
     print('\n[*] complete!\n')
-
-    eh_settings_ini = os.path.join(root_dir, 'settings/core/eaphammer.ini')
-
-    parser = ConfigParser()
-    parser.read(eh_settings_ini)
-    parser.set('services', 'stop_dhcpcd', 'True')
-    parser.set('services', 'stop_avahi', 'True')
-    parser.set('services', 'use_network_manager', 'False')
-
-    with open(eh_settings_ini, 'w') as output_handle:
-        parser.write(output_handle)
 

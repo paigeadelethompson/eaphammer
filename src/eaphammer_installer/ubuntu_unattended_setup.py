@@ -13,7 +13,7 @@ def read_deps_file(deps_file):
     with open(deps_file) as fd:
         return ' '.join([ line.strip() for line in fd ])
 
-if __name__ == '__main__':
+def main():
 
     exit_if_not_root()
                     
@@ -33,9 +33,6 @@ if __name__ == '__main__':
     openssl_bin = settings.dict['paths']['openssl']['bin']
     dh_file = settings.dict['paths']['certs']['dh']
 
-    if input('Important: it is highly recommended that you run "apt -y update" and "apt -y upgrade" prior to running this setup script. Do you wish to proceed? Enter [y/N]: ').lower() != 'y':
-        sys.exit('Aborting.')
-    print()
 
 
     print('\n[*] Removing stub files...\n')
@@ -43,8 +40,8 @@ if __name__ == '__main__':
     print('\ncomplete!\n')
 
 
-    print('\n[*] Installing Parot dependencies...\n')
-    os.system('apt -y install %s' % read_deps_file('parot-dependencies.txt'))
+    print('\n[*] Installing Kali dependencies...\n')
+    os.system('export DEBIAN_FRONTEND=noninteractive && apt -yq install %s' % read_deps_file('kali-dependencies.txt'))
     print('\n[*] complete!\n')
 
     print('\n[*] Installing Python dependencies...\n')

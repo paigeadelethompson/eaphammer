@@ -13,7 +13,7 @@ def read_deps_file(deps_file):
     with open(deps_file) as fd:
         return ' '.join([ line.strip() for line in fd ])
 
-if __name__ == '__main__':
+def main():
 
     exit_if_not_root()
                     
